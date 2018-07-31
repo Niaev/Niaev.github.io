@@ -17,7 +17,7 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 		
-			var alfanum = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFTGIJKLMNOPQRSTUVWXYZáàãâéèêíìîóòõôúùûçÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛÇ.,:;/\\\'\"?!@#$%&*\(\)\[\]\{\}=+-_´`~^ ';
+			var alfanum = ' .,:;?/|\\\'\"!@#$%&*\(\)\[\]\{\}=+-_´`~^0123456789abcdefghijklmnopqrstuvwxyzABCDEFTGIJKLMNOPQRSTUVWXYZáàãâäéèêäíìîóòõôöúùûüçñÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÔÖÚÙÛÜÇÑ';
 			
 			function codigoChar(letra) {
 			
@@ -77,7 +77,7 @@
 				
 				var msgCodXORed = [];
 				for (var x = 0; x < chaveCod.length; x++) {
-					msgCodXORed.push(parseInt(parseInt((chaveCod[x] ^ msgCod[x]).toString(2)), 2));
+					msgCodXORed.push((chaveCod[x] ^ msgCod[x]));
 				}
 				console.log('Mensagem criptografada em codigo: ' + msgCodXORed.join(' '));
 				
