@@ -57,7 +57,7 @@
 			var inputMsg = document.getElementById('msgEn');
 			inputMsg.addEventListener('keypress', function (e) {
 				
-				if (parseInt(e.key) || e.key == 0) {
+				if (e.key.charCodeAt(0) > 47 && e.key.charCodeAt(0) < 58) {
 					e.preventDefault();
 					return false;
 				}
