@@ -7,19 +7,25 @@
 	<body>
 		<h1>cry 2.0</h1>
 
-		<h3>Encript</h3>
-		<input id="msgEn" placeholder="Mensagem">
-		<input id="keyEn" placeholder="Chave">
-		<button id="encript">Encript.</button><br>
-		<p id="encripted"></p>
+		<fieldset>
+			<legend>Encript</legend>
+			<textarea id="msgEn" placeholder="Mensagem"></textarea><br>
+			<input id="keyEn" placeholder="Chave"><br>
+			<button id="encript">Encript.</button><br><br>
+			<label for="encripted">Mensagem Cifrada:</label>
+			<p id="encripted"></p>
+		</fieldset>
 
 		<br>
-
-		<h3>Decript</h3>
-		<input id="msgDe" placeholder="Mensagem">
-		<input id="keyDe" placeholder="Chave">
-		<button id="decript">Decript.</button><br>
-		<p id="decripted"></p>
+		
+		<fieldset>
+			<legend>Decript</legend>
+			<textarea id="msgDe" placeholder="Mensagem cifrada"></textarea><br>
+			<input id="keyDe" placeholder="Chave"><br>
+			<button id="decript">Decript.</button><br><br>
+			<label for="decripted">Mensagem Decifrada:</label>
+			<p id="decripted"></p>
+		</fieldset>
 	</body>
 
 	<script>
