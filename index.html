@@ -47,6 +47,15 @@
 				return alfanum[codigo];
 			}
 			
+			// não permite escrever números
+			var inputMsg = document.getElementById('msgEn');
+			inputMsg.addEventListener('keypress', function (e) {
+				
+				if (parseInt(e.key)) {
+					e.preventDefault();
+					return false;
+				}
+			});
 			
 			/*	--- PROCESSO DE CIFRAGEM ------------------------------------------	*/
 			
@@ -62,7 +71,7 @@
 				console.log('########################################');
 				
 				// input da mensagem
-				var msg = document.getElementById('msgEn').value;
+				var msg = inputMsg.value;
 				console.log('Mensagem: ' + msg);
 				
 				// mensagem em código
