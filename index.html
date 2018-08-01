@@ -6,89 +6,197 @@
 	</head>
 	<body>
 		<h1>cry 2.0</h1>
-		
-		<h3>Encript / Decript</h3>
+
+		<h3>Encript</h3>
 		<input id="msgEn" placeholder="Mensagem">
 		<input id="keyEn" placeholder="Chave">
 		<button id="encript">Encript.</button><br>
 		<p id="encripted"></p>
+
+		<br>
+
+		<h3>Decript</h3>
+		<input id="msgDe" placeholder="Mensagem">
+		<input id="keyDe" placeholder="Chave">
+		<button id="decript">Decript.</button><br>
+		<p id="decripted"></p>
 	</body>
 
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
-		
-			var alfanum = ' .,:;?/|\\\'\"!@#$%&*\(\)\[\]\{\}=+-_´`~^0123456789abcdefghijklmnopqrstuvwxyzABCDEFTGIJKLMNOPQRSTUVWXYZáàãâäéèêäíìîóòõôöúùûüçñÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÔÖÚÙÛÜÇÑ';
 			
+			/*	--- GLOBAL -------------------------------------------------------	*/
+			
+			// banco de caracteres
+			var alfanum = 'abcdefghijklmnopqrstuvwxyzáàãâéèêíìîóòõôúùûçABCDEFGHIJKLMNOPQRSTUVWXYZÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛÇ !\"#$%&\'()*+,-./:;<=>?';
+			
+			// encontrar código - do banco - correspondente a uma letra
 			function codigoChar(letra) {
-			
-				var codigo;
 				for (var x = 0; x < alfanum.length; x++) {
 					if (letra == alfanum[x]) {
-						codigo = x;
+						return x;
 					}
 				}
-				
-				return codigo;
 			}
 			
+			// encontrar letra - do banco - correspondente a um código
 			function charCodigo(codigo) {
-				
+				if (codigo >= alfanum.length) {
+					return codigo;
+				}
 				return alfanum[codigo];
 			}
-		
-			// encript
+			
+			
+			/*	--- PROCESSO DE CIFRAGEM ------------------------------------------	*/
+			
+			// botão
 			var encriptao = document.getElementById('encript');
+			
+			// parágrafo onde será exibida a mensagem cifrada
 			var encriptasso = document.getElementById('encripted');
 			
-			encriptao.addEventListener('click', function(e) {
-			
+			// ao clicar em 'Encript.'
+			encriptao.addEventListener('click', function() {
+				
+				console.log('########################################');
+				
+				// input da mensagem
 				var msg = document.getElementById('msgEn').value;
 				console.log('Mensagem: ' + msg);
 				
+				// mensagem em código
 				var msgCod = [];
 				for (var x = 0; x < msg.length; x++) {
 					msgCod.push(codigoChar(msg[x]));
 				}
 				console.log('Mensagem codificada: ' + msgCod.join(' '));
 				
+				// input da chave
 				var chave = document.getElementById('keyEn').value;
 				console.log('Chave: ' + chave);
 				
+				// quantas vezes a chave deve ser repetir em função do tamanho da mensagem
 				var qtdChaves = parseInt(msg.length / chave.length);
 				console.log('Chaves a repetir: ' + qtdChaves);
 				
+				// quantos caracteres faltam para a chave ficar do mesmo tamanho da mensagem, a pesar da repetição
 				var faltaChars = msg.length % chave.length;
 				console.log('Caracteres faltando para completar a chave: ' + faltaChars);
 				
+				// de acordo com as variáveis 'qtdChaves' e 'faltaChars' é criada uma chave definitiva
 				var chaveDef = '';
 				for (var x = 0; x < qtdChaves; x++) {
 					chaveDef += chave;
 				}
 				for (var x = 0; x < faltaChars; x++) {
-					chaveDef += chave[x]
+					chaveDef += chave[x];
 				}
 				console.log('Chave definitiva: ' + chaveDef);
 				
+				// chave definitiva em código
 				var chaveCod = [];
 				for (var x = 0; x < chaveDef.length; x++) {
 					chaveCod.push(codigoChar(chaveDef[x]));
 				}
 				console.log('Chave codificada: ' + chaveCod.join(' '));
 				
+				// mensagem cifrada em código
 				var msgCodXORed = [];
 				for (var x = 0; x < chaveCod.length; x++) {
 					msgCodXORed.push((chaveCod[x] ^ msgCod[x]));
 				}
-				console.log('Mensagem criptografada em codigo: ' + msgCodXORed.join(' '));
+				console.log('Mensagem cifrada em codigo: ' + msgCodXORed.join(' '));
 				
+				// mensagem crifada em texto
 				var msgEncripted = '';
 				for (var x = 0; x < msgCodXORed.length; x++) {
 					msgEncripted += charCodigo(msgCodXORed[x]);
 				}
-				console.log('Mensagem criptografada: ' + msgEncripted);
+				console.log('Mensagem cifrada: ' + msgEncripted);
 				encriptasso.innerHTML = msgEncripted;
+				
+				console.log('########################################');
 			});
-		
+			// fim da cifragem
+			
+			
+			/*	--- PROCESSO DE DECIFRAGEM ----------------------------------------	*/
+			
+			// botão
+			var decriptao = document.getElementById('decript');
+			
+			// parágrafo onde será exibida a mensagem decifrada
+			var decriptasso = document.getElementById('decripted');
+			
+			// ao clicar em 'Decript.'
+			decriptao.addEventListener('click', function() {
+				
+				console.log('########################################');
+				
+				// input da mensagem cifrada
+				var msg = document.getElementById('msgDe').value;
+				console.log('Mensagem: ' + msg);
+				
+				// mensagem cifrada em código
+				var msgCod = [];
+				for (var x = 0; x < msg.length; x++) {
+					if (parseInt(msg[x])) {
+						msgCod.push(msg[x] + msg[x + 1] + msg[x + 2]);
+						x += 2;
+					} else {
+						msgCod.push(codigoChar(msg[x]));
+					}
+				}
+				console.log('Mensagem codificada: ' + msgCod.join(' '));
+				
+				// input da chave
+				var chave = document.getElementById('keyDe').value;
+				console.log('Chave: ' + chave);
+				
+				// quantas vezes a chave deve ser repetir em função do tamanho da mensagem
+				var qtdChaves = parseInt(msgCod.length / chave.length);
+				console.log('Chaves a repetir: ' + qtdChaves);
+				
+				// quantos caracteres faltam para a chave ficar do mesmo tamanho da mensagem, a pesar da repetição
+				var faltaChars = msgCod.length % chave.length;
+				console.log('Caracteres faltando para completar a chave: ' + faltaChars);
+				
+				// de acordo com as variáveis 'qtdChaves' e 'faltaChars' é criada uma chave definitiva
+				var chaveDef = '';
+				for (var x = 0; x < qtdChaves; x++) {
+					chaveDef += chave;
+				}
+				for (var x = 0; x < faltaChars; x++) {
+					chaveDef += chave[x];
+				}
+				console.log('Chave definitiva: ' + chaveDef);
+				
+				// chave definitiva em código
+				var chaveCod = [];
+				for (var x = 0; x < chaveDef.length; x++) {
+					chaveCod.push(codigoChar(chaveDef[x]));
+				}
+				console.log('Chave codificada: ' + chaveCod.join(' '));
+				
+				// mensagem decifrada em código
+				var msgCodXORed = [];
+				for (var x = 0; x < chaveCod.length; x++) {
+					msgCodXORed.push((chaveCod[x] ^ msgCod[x]));
+				}
+				console.log('Mensagem cifrada em codigo: ' + msgCodXORed.join(' '));
+				
+				// mensagem decifrada em texto
+				var msgDecripted = '';
+				for (var x = 0; x < msgCodXORed.length; x++) {
+					msgDecripted += charCodigo(msgCodXORed[x]);
+				}
+				console.log('Mensagem decifrada: ' + msgDecripted);
+				decriptasso.innerHTML = msgDecripted;
+				
+				console.log('########################################');
+			});
+			// fim da decifragem
 		});
 	</script>
 </html>
