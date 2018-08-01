@@ -1,0 +1,30 @@
+body {
+	font-family: arial;
+}
+
+fieldset {
+	padding: 10px;
+}
+
+textarea, input, button, label, strong {
+	margin: 5px;
+}
+
+textarea, input, button {
+	border: 1px solid grey;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+textarea:focus, input:focus, button:focus {
+	border: 1px solid #0099ff;
+}
+
+textarea, input {
+	width: 300px;
+}
+
+hr {
+	border: 1px solid lightgrey;
+}
+
