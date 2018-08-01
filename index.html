@@ -51,7 +51,7 @@
 			var inputMsg = document.getElementById('msgEn');
 			inputMsg.addEventListener('keypress', function (e) {
 				
-				if (parseInt(e.key)) {
+				if (parseInt(e.key) || e.key == 0) {
 					e.preventDefault();
 					return false;
 				}
