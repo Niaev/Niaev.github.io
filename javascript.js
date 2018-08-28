@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// não permite escrever números
 	var inputMsg = document.getElementById('msgEn');
-	inputMsg.addEventListener('keypress', function (e) {
+	inputMsg.addEventListener('keydown', function (e) {
 		
 		if (e.key.charCodeAt(0) > 47 && e.key.charCodeAt(0) < 58) {
 			e.preventDefault();
