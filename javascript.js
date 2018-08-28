@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			msgEncripted += charCodigo(msgCodXORed[x]);
 		}
 		console.log('Mensagem cifrada: ' + msgEncripted);
-		encriptasso.innerHTML = msgEncripted;
+		encriptasso.innerHTML = msgEncripted.replace(/</, '&lt;');
 		
 		console.log('########################################');
 	});
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			msgDecripted += charCodigo(msgCodXORed[x]);
 		}
 		console.log('Mensagem decifrada: ' + msgDecripted);
-		decriptasso.innerHTML = msgDecripted;
+		decriptasso.innerHTML = msgDecripted.replace(/</, '&lt;');
 		
 		console.log('########################################');
 	});
