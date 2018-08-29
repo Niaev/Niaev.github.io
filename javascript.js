@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	var inputMsg = document.getElementById('msgEn');
 	inputMsg.addEventListener('keydown', function (e) {
 		
-		if (typeof e.key == "number") {
+		if (e.key.charCodeAt(0) > 47 && e.key.charCodeAt(0) < 58) {
 			e.preventDefault();
 			return false;
 		}
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		// mensagem cifrada em código
 		var msgCod = [];
 		for (var x = 0; x < msg.length; x++) {
-			if (typeof msg[x] == "number") {
+			if (parseInt(msg[x])) {
 				msgCod.push(msg[x] + msg[x + 1] + msg[x + 2]);
 				x += 2;
 			} else {
