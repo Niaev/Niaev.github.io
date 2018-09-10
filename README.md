@@ -1,4 +1,4 @@
-# CRY 2.0 - Niaev.github.io
+# CRY 2.0 - [Niaev.github.io](https://niaev.github.io/)
 
 CRY 2.0 se refere a uma cifra que eu criei - que está longe de ser usual e perfeita - somente para fins de lógicos de apredizado.
 
