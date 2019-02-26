@@ -23,9 +23,13 @@ Ao clicar em ```Encript.```, o **texto original** e a **chave** tem seus caracte
 | -------------- | ----- |
 | Olá, mundo | chave |
 
+**Texto original**
+
 | O | l | á | , |   | m | u | n | d | o |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 58 | 11 | 26 | 100 | 88 | 12 | 20 | 13 | 3 | 14 | 
+
+**Chave**
 
 | c | h | a | v | e |
 | --- | --- | --- | --- | --- |
@@ -40,11 +44,14 @@ Essas sequencias de números são transformadas em *arrays*:
 Então essas *arrays* são combinadas pela operação XOR (em javascript representada por ```^```), letra por letra. Nesse caso, a **chave** é menor que o **texto original**, então ela se repete o número de vezes suficiente para criptografar toda a mensagem:
 
 | 58 | 11 | 26 | 100 | 88 | 12 | 20 | 13 | 3 | 14 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2 | 7 | 0 | 21 | 4 | 2 | 7 | 0 | 21 | 4 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Resultado:
 
 | 56 | 12 | 26 | 113 | 92 | 14 | 19 | 13 | 22 | 10 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 Os novos números gerados são transformados em caracteres de acordo com os índices correspondentes na variável ```alfanum```. Repare que a variável ```alfanum``` tem 110 caracteres, isto é, o seu último caractere tem índice ```109``` e que o quarto número do resultado acima é ```113```, maior que o maior índice dentro de ```alfanum```.
 Nesse caso, ```113``` não será transformado em caractere, no texto final ficará representado dessa forma. Então, temos o **texto cifrado**, resultado final da cifragem:
