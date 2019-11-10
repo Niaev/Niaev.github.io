@@ -23,50 +23,51 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 	// não permite escrever números
-	var inputMsg = document.getElementById('msgEn');
-	inputMsg.addEventListener('keydown', function (e) {
-		
-		if (e.key.charCodeAt(0) > 47 && e.key.charCodeAt(0) < 58) {
-			e.preventDefault();
-			return false;
+	function inputHasNum(text) {
+		for (var i=0;i < text.length; i++) {
+			if (!isNaN(parseInt(text[i]))) {
+				return true;
+			}
 		}
-	});
+		return false;
+	}
 	
 	/*	--- PROCESSO DE CIFRAGEM ------------------------------------------	*/
 	
 	// botão
-	var encriptao = document.getElementById('encript');
+	var enc = document.getElementById('enc');
 	
-	// parágrafo onde será exibida a mensagem cifrada
-	var encriptasso = document.getElementById('encripted');
+	// textarea da mensagem inicial
+	var input = document.getElementById('input');
+	input.value = '';
+	// textarea onde será exibida a mensagem cifrada
+	var output = document.getElementById('output');
+	output.value = ''
 	
 	// ao clicar em 'Encript.'
-	encriptao.addEventListener('click', function() {
-		
-		console.log('########################################');
-		
+	enc.addEventListener('click', function() {				
 		// input da mensagem
-		var msg = inputMsg.value;
-		console.log('Mensagem: ' + msg);
+		var msg = input.value;
+
+		if (inputHasNum(msg)) {
+			alert('the input field can\'t have numbers for encryption');
+			return false;
+		}
 		
 		// mensagem em código
 		var msgCod = [];
 		for (var x = 0; x < msg.length; x++) {
 			msgCod.push(codigoChar(msg[x]));
 		}
-		console.log('Mensagem codificada: ' + msgCod.join(' '));
 		
 		// input da chave
-		var chave = document.getElementById('keyEn').value;
-		console.log('Chave: ' + chave);
+		var chave = document.getElementById('key').value;
 		
 		// quantas vezes a chave deve ser repetir em função do tamanho da mensagem
 		var qtdChaves = parseInt(msg.length / chave.length);
-		console.log('Chaves a repetir: ' + qtdChaves);
 		
 		// quantos caracteres faltam para a chave ficar do mesmo tamanho da mensagem, a pesar da repetição
 		var faltaChars = msg.length % chave.length;
-		console.log('Caracteres faltando para completar a chave: ' + faltaChars);
 		
 		// de acordo com as variáveis 'qtdChaves' e 'faltaChars' é criada uma chave definitiva
 		var chaveDef = '';
@@ -76,51 +77,37 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (var x = 0; x < faltaChars; x++) {
 			chaveDef += chave[x];
 		}
-		console.log('Chave definitiva: ' + chaveDef);
 		
 		// chave definitiva em código
 		var chaveCod = [];
 		for (var x = 0; x < chaveDef.length; x++) {
 			chaveCod.push(codigoChar(chaveDef[x]));
 		}
-		console.log('Chave codificada: ' + chaveCod.join(' '));
 		
 		// mensagem cifrada em código
 		var msgCodXORed = [];
 		for (var x = 0; x < chaveCod.length; x++) {
 			msgCodXORed.push((chaveCod[x] ^ msgCod[x]));
 		}
-		console.log('Mensagem cifrada em codigo: ' + msgCodXORed.join(' '));
 		
 		// mensagem crifada em texto
 		var msgEncripted = '';
 		for (var x = 0; x < msgCodXORed.length; x++) {
 			msgEncripted += charCodigo(msgCodXORed[x]);
 		}
-		console.log('Mensagem cifrada: ' + msgEncripted);
-		encriptasso.innerHTML = msgEncripted.replace(/</g, '&lt;');
-		
-		console.log('########################################');
+		output.value = msgEncripted.replace(/</g, '&lt;');
 	});
 	// fim da cifragem
-	
 	
 	/*	--- PROCESSO DE DECIFRAGEM ----------------------------------------	*/
 	
 	// botão
-	var decriptao = document.getElementById('decript');
-	
-	// parágrafo onde será exibida a mensagem decifrada
-	var decriptasso = document.getElementById('decripted');
+	var dec = document.getElementById('dec');
 	
 	// ao clicar em 'Decript.'
-	decriptao.addEventListener('click', function() {
-		
-		console.log('########################################');
-		
+	dec.addEventListener('click', function() {		
 		// input da mensagem cifrada
-		var msg = document.getElementById('msgDe').value;
-		console.log('Mensagem: ' + msg);
+		var msg = input.value;
 		
 		// mensagem cifrada em código
 		var msgCod = [];
@@ -132,19 +119,15 @@ document.addEventListener('DOMContentLoaded', function() {
 				msgCod.push(codigoChar(msg[x]));
 			}
 		}
-		console.log('Mensagem codificada: ' + msgCod.join(' '));
 		
 		// input da chave
-		var chave = document.getElementById('keyDe').value;
-		console.log('Chave: ' + chave);
+		var chave = document.getElementById('key').value;
 		
 		// quantas vezes a chave deve ser repetir em função do tamanho da mensagem
 		var qtdChaves = parseInt(msgCod.length / chave.length);
-		console.log('Chaves a repetir: ' + qtdChaves);
 		
 		// quantos caracteres faltam para a chave ficar do mesmo tamanho da mensagem, a pesar da repetição
 		var faltaChars = msgCod.length % chave.length;
-		console.log('Caracteres faltando para completar a chave: ' + faltaChars);
 		
 		// de acordo com as variáveis 'qtdChaves' e 'faltaChars' é criada uma chave definitiva
 		var chaveDef = '';
@@ -154,31 +137,36 @@ document.addEventListener('DOMContentLoaded', function() {
 		for (var x = 0; x < faltaChars; x++) {
 			chaveDef += chave[x];
 		}
-		console.log('Chave definitiva: ' + chaveDef);
 		
 		// chave definitiva em código
 		var chaveCod = [];
 		for (var x = 0; x < chaveDef.length; x++) {
 			chaveCod.push(codigoChar(chaveDef[x]));
 		}
-		console.log('Chave codificada: ' + chaveCod.join(' '));
 		
 		// mensagem decifrada em código
 		var msgCodXORed = [];
 		for (var x = 0; x < chaveCod.length; x++) {
 			msgCodXORed.push((chaveCod[x] ^ msgCod[x]));
 		}
-		console.log('Mensagem cifrada em codigo: ' + msgCodXORed.join(' '));
 		
 		// mensagem decifrada em texto
 		var msgDecripted = '';
 		for (var x = 0; x < msgCodXORed.length; x++) {
 			msgDecripted += charCodigo(msgCodXORed[x]);
 		}
-		console.log('Mensagem decifrada: ' + msgDecripted);
-		decriptasso.innerHTML = msgDecripted.replace(/</g, '&lt;');
-		
-		console.log('########################################');
+		output.value = msgDecripted.replace(/</g, '&lt;');
 	});
 	// fim da decifragem
+
+	/* --- PROCESSO DE CÓPIA DO OUTPUT ----------------------------------------	*/
+
+	// botão
+	var copy = document.querySelector('#copy');
+
+	copy.addEventListener('click', function() {
+		output.select();
+		output.setSelectionRange(0, 99999);
+		document.execCommand('copy');
+	});
 });
