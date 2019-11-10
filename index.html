@@ -29,6 +29,23 @@
 					<button id="copy">copy to clipboard</button>
 				</div>				
 			</div>
+
+			<br>
+
+			<h1>cry 2.0 mirrors</h1>
+			<ul>
+				<li>
+					IPFS - <a href="https://ipfs.io/ipfs/Qmbr3UH877ktx6kXi1ahppAHLYBBLkYKeGBddLN36N5s19/">Qmbr3UH877ktx6kXi1ahppAHLYBBLkYKeGBddLN36N5s19</a>
+				</li>
+				<li>
+					Heroku App - <a href="https://cry2-web.herokuapp.com/">https://cry2-web.herokuapp.com/</a>
+				</li>
+			</ul>
+
+			<br>
+
+			<h1>Source code</h1>
+			<a href="https://github.com/Niaev/cry2-web">https://github.com/Niaev/cry2-web</a>
 		</div>
 		
 	</body>
