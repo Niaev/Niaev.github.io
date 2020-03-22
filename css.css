@@ -104,3 +104,19 @@ textarea:focus, input:focus, button:focus {
 .nav a:hover {
 	opacity: 0.5;
 }
+
+.foot {
+	padding: 20px;
+	background-color: #1e1e1e;
+	text-align: center;
+	color: #dcdcdc;
+}
+.foot a {
+	text-decoration: none;
+	right: 0;
+	text-align: center;
+}
+.foot a img {
+	width: 30px;
+}
+
