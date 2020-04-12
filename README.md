@@ -1,18 +1,16 @@
-﻿# CRY 2.0 - [Niaev.github.io](https://niaev.github.io/)
+﻿# [cry 2](https://cry2-web.herokuapp.com/)
 
-CRY 2.0 se refere a uma cifra que criei para aprender algumas funções do javascript e alguns conceitos de criptografia.
+**cry 2** se refere a uma cifra que criei para aprender algumas funções do Javascript e alguns conceitos de criptografia.
 
 ## Como funciona?
 
-Pode-se dizer que CRY 2.0 é uma **criptografia de chave simétrica**, isto é, um método que necessita de um **texto original** e uma **chave**, sendo o primeiro um texto qualquer que será criptografado e o segundo um conjunto de caracteres que será utilizado para cifrar e decifrar o **texto original**. Cada informação para a cifragem é solicitada no formulário disponível em [Niaev.github.io](https://niaev.github.io/).
+Pode-se dizer que **cry 2** é uma **criptografia de chave simétrica**, isto é, um método que necessita de um **texto original** e uma **chave**, sendo o primeiro um texto qualquer que será criptografado e o segundo um conjunto de caracteres que será utilizado para cifrar e decifrar o **texto original**. Cada informação para a cifragem é solicitada no formulário disponível em [cry2-web.herokuapp.com](https://cry2-web.herokuapp.com/).
 
-É possível observar nas linhas 5 e 6 do arquivo ```javascript.js``` o seguinte trecho de código:
+É possível observar nas [linhas 5 e 6 do arquivo ```source.js```](https://github.com/Niaev/cry2-web/blob/master/source.js#L5) o seguinte trecho de código:
 
-```
-
+```javascript
 // banco de caracteres
 var alfanum = 'abcdefghijklmnopqrstuvwxyzáàãâéèêíìîóòõôúùûçABCDEFGHIJKLMNOPQRSTUVWXYZÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛÇ !\"#$%&\'()*+,-./:;<=>?';
-
 ```
 
 A variável ```alfanum```, citada no trecho de código acima, é uma string que contém todos os caracteres que podem ser utilizados no **texto original** e na **chave**. Pois é, números não são bem-vindos aqui, mas eu já explico o motivo.
@@ -41,7 +39,7 @@ Essas sequencias de números são transformadas em *arrays*:
 | -------------- | ----- |
 | [ 58, 11, 26, 100, 88, 12, 20, 13, 3, 14 ] | [ 2, 7, 0, 21, 4 ] |
 
-Então essas *arrays* são combinadas pela operação XOR (em javascript representada por ```^```), letra por letra. Nesse caso, a **chave** é menor que o **texto original**, então ela se repete o número de vezes suficiente para criptografar toda a mensagem:
+Então essas *arrays* são combinadas pela operação XOR (em javascript representada pelo operador ```^```), letra por letra. Nesse caso, a **chave** é menor que o **texto original**, então ela se repete o número de vezes suficiente para criptografar toda a mensagem:
 
 | 58 | 11 | 26 | 100 | 88 | 12 | 20 | 13 | 3 | 14 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -64,11 +62,5 @@ Nesse caso, ```113``` não será transformado em caractere, no texto final ficar
 | Mmá113$otnwk |
 
 O processo reverso, de decifragem, efetuado ao clicar em ```Decript.```, solicita um **texto cifrado** e uma **chave**, tendo como resultado o **texto original**. O método de cifragem e de decifragem são quase iguais, tendo como diferença, na decifragem, o algoritmo que detecta um número no **texto cifrado**, já que só aparecerão números maiores que 109, todos os números estarão apresentados em trios, esse algoritmo detecta os próximos dois números, formando um trio na hora de decifrar, sendo esse trio, transformado em somente um caractere ao final do processo de decifragem. Eis aqui o motivo para não permitir números nessa criptografia.
-
-## Por que "2.0"?
-
-A primeira versão (seria a "1.0"?) foi feita em papel, somente com letras maiúsculas, sem acentuação, somente com pontuações básicas e espaçamento, o que não passava de uns 40 ou 50 caracteres. Fiz para ver se a minha ideia inicial funcionava.
-
-Essa versão (2.0) é automatizada - como eu disse, a outra foi feita em papel, então eu fazia os cálculos na mão, o que resultava em alguns erros que forneciam mensagens sem sentido - e com uma maior gama de caracteres, aumentando a "força" dessa "criptografia".
 
 ## Faça bom uso :)

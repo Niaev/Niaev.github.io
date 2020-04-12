@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>cry 2.0</title>
+		<title>cry 2</title>
 		
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
 
 		<div class="nav">
-			<h1>cry 2.0</h1>
+			<h1>cry 2</h1>
 			<h3>the cipher</h3>
 			<a href="https://github.com/Niaev/cry2-web" target="_blank">
 				<img src="github-corner.png" alt="Fork me on Github">
@@ -35,15 +35,15 @@
 			<div class="read-me">
 				<sub>README.md</sub>
 
-				<h1>cry 2.0</h1>
+				<h1><a href="cry2-web.herokuapp.com">cry 2</a></h1>
 
-				<p>CRY 2.0 se refere a uma cifra que criei para aprender algumas funções do javascript e alguns conceitos de criptografia.</p>
+				<p><b>cry 2</b> se refere a uma cifra que criei para aprender algumas funções do Javascript e alguns conceitos de criptografia.</p>
 
 				<h2>Como funciona?</h2>
 
-				<p>Pode-se dizer que cry 2.0 é uma <b>criptografia de chave simétrica</b>, isto é, um método que necessita de um <b>texto original</b> e uma <b>chave</b>, sendo o primeiro um texto qualquer que será criptografado e o segundo um conjunto de caracteres que será utilizado para cifrar e decifrar o <b>texto original</b>. Cada informação para a cifragem é solicitada no formulário disponível em <a href="https://cry2-web.herokuapp.com/">cry2-web.herokuapp.com</a>.</p>
+				<p>Pode-se dizer que <b>cry 2</b> é uma <b>criptografia de chave simétrica</b>, isto é, um método que necessita de um <b>texto original</b> e uma <b>chave</b>, sendo o primeiro um texto qualquer que será criptografado e o segundo um conjunto de caracteres que será utilizado para cifrar e decifrar o <b>texto original</b>. Cada informação para a cifragem é solicitada no formulário disponível em <a href="https://cry2-web.herokuapp.com/">cry2-web.herokuapp.com</a>.</p>
 
-				<p>É possível observar nas linhas 5 e 6 do arquivo <code>javascript.js</code> o seguinte trecho de código:</p>
+				<p>É possível observar nas <a href="https://github.com/Niaev/cry2-web/blob/master/source.js#L5">linhas 5 e 6 do arquivo <code>source.js</code></a> o seguinte trecho de código:</p>
 
 				<code>
 					// banco de caracteres <br>
@@ -60,7 +60,7 @@
 
 				<p>-- tabela --</p>
 
-				<p>Então essas <i>arrays</i> são combinadas pela operação XOR (em javascript representada por <code>^</code>), letra por letra. Nesse caso, a <b>chave</b> é menor que o <b>texto original</b>, então ela se repete o número de vezes suficiente para criptografar toda a mensagem:</p>
+				<p>Então essas <i>arrays</i> são combinadas pela operação XOR (em javascript representada pelo operador <code>^</code>), letra por letra. Nesse caso, a <b>chave</b> é menor que o <b>texto original</b>, então ela se repete o número de vezes suficiente para criptografar toda a mensagem:</p>
 
 				<p>-- tabela --</p>
 
@@ -70,18 +70,12 @@
 
 				<p>O processo reverso, de decifragem, efetuado ao clicar em <code>Decript.</code>, solicita um <b>texto cifrado</b> e uma <b>chave</b>, tendo como resultado o <b>texto original</b>. O método de cifragem e de decifragem são quase iguais, tendo como diferença, na decifragem, o algoritmo que detecta um número no <b>texto cifrado</b>, já que só aparecerão números maiores que 109, todos os números estarão apresentados em trios, esse algoritmo detecta os próximos dois números, formando um trio na hora de decifrar, sendo esse trio, transformado em somente um caractere ao final do processo de decifragem. Eis aqui o motivo para não permitir números nessa criptografia.</p>
 
-				<h2>Por que "2.0"?</h2>
-
-				<p>A primeira versão (seria a "1.0"?) foi feita em papel, somente com letras maiúsculas, sem acentuação, somente com pontuações básicas e espaçamento, o que não passava de uns 40 ou 50 caracteres. Fiz para ver se a minha ideia inicial funcionava.</p>
-
-				<p>Essa versão (2.0) é automatizada - como eu disse, a outra foi feita em papel, então eu fazia os cálculos na mão, o que resultava em alguns erros que forneciam mensagens sem sentido - e com uma maior gama de caracteres, aumentando a "força" dessa "criptografia".</p>
-
 				<h2>Faça bom uso :)</h2>
 			</div>
 
 			<br>
 
-			<h1>cry 2.0 mirrors</h1>
+			<h1>cry 2 mirrors</h1>
 			<ul>
 				<li>
 					IPFS - <a href="https://ipfs.io/ipfs/Qmbr3UH877ktx6kXi1ahppAHLYBBLkYKeGBddLN36N5s19/">Qmbr3UH877ktx6kXi1ahppAHLYBBLkYKeGBddLN36N5s19</a>
