@@ -6,7 +6,7 @@
 
 Pode-se dizer que **cry 2** é uma **criptografia de chave simétrica**, isto é, um método que necessita de um **texto original** e uma **chave**, sendo o primeiro um texto qualquer que será criptografado e o segundo um conjunto de caracteres que será utilizado para cifrar e decifrar o **texto original**. Cada informação para a cifragem é solicitada no formulário disponível em [cry2-web.herokuapp.com](https://cry2-web.herokuapp.com/).
 
-É possível observar nas [linhas 5 e 6 do arquivo ```source.js```](https://github.com/Niaev/cry2-web/blob/master/source.js#L5) o seguinte trecho de código:
+É possível observar nas [linhas 5 e 6 do arquivo ```source.js```](https://github.com/Niaev/cry2-web/blob/master/src/js/source.js#L5) o seguinte trecho de código:
 
 ```javascript
 // banco de caracteres
