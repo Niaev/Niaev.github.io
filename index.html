@@ -5,6 +5,11 @@
 		<title>cry 2</title>
 		
 		<link rel="stylesheet" type="text/css" href="src/css/style.css">
+
+		<!-- highlight.js -->
+		<link rel="stylesheet" type="text/css" href="src/css/default.css">
+		<script src="src/js/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body>
 
@@ -45,10 +50,12 @@
 
 				<p>É possível observar nas <a href="https://github.com/Niaev/cry2-web/blob/master/source.js#L5">linhas 5 e 6 do arquivo <code>source.js</code></a> o seguinte trecho de código:</p>
 
-				<code>
-					// banco de caracteres <br>
-					var alfanum = 'abcdefghijklmnopqrstuvwxyzáàãâéèêíìîóòõôúùûçABCDEFGHIJKLMNOPQRSTUVWXYZÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛÇ !\"#$%&\'()*+,-./:;<=>?';
-				</code>
+				<pre>
+					<code class="js">
+// banco de caracteres <br>
+var alfanum = 'abcdefghijklmnopqrstuvwxyzáàãâéèêíìîóòõôúùûçABCDEFGHIJKLMNOPQRSTUVWXYZÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛÇ !\"#$%&\'()*+,-./:;<=>?';
+					</code>
+				</pre>
 
 				<p>A variável <code>alfanum</code>, citada no trecho de código acima, é uma string que contém todos os caracteres que podem ser utilizados no <b>texto original</b> e na <b>chave</b>. Pois é, números não são bem-vindos aqui, mas eu já explico o motivo.</p>
 
