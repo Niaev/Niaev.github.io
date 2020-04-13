@@ -38,8 +38,6 @@
 			<br>
 			
 			<div class="read-me">
-				<sub>README.md</sub>
-
 				<h1><a href="cry2-web.herokuapp.com">cry 2</a></h1>
 
 				<p><b>cry 2</b> se refere a uma cifra que criei para aprender algumas funções do Javascript e alguns conceitos de criptografia.</p>
@@ -61,26 +59,168 @@ var alfanum = 'abcdefghijklmnopqrstuvwxyzáàãâéèêíìîóòõôúùûçABC
 
 				<p>Ao clicar em <code>Encript.</code>, o <b>texto original</b> e a <b>chave</b> tem seus caracteres separados um a um e são comparados aos caracteres da variável <code>alfanum</code>, assim recebem o índice correspondente ao caractere equivalente presente nessa variável.</p>
 
-				<p>-- tabela --</p>
+				<table>
+					<tr>
+						<th>Texto original</th>
+						<th>Chave</th>
+					</tr>
+					<tr>
+						<td>Olá, mundo</td>
+						<td>chave</td>
+					</tr>
+				</table>
+
+				<p><b>Texto original</b></p>
+
+				<table>
+					<tr>
+						<th>O</th>
+						<th>l</th>
+						<th>á</th>
+						<th>,</th>
+						<th> </th>
+						<th>m</th>
+						<th>u</th>
+						<th>n</th>
+						<th>d</th>
+						<th>o</th>
+					</tr>
+					<tr>
+						<td>58</td>
+						<td>11</td>
+						<td>26</td>
+						<td>100</td>
+						<td>88</td>
+						<td>12</td>
+						<td>20</td>
+						<td>13</td>
+						<td>3</td>
+						<td>14</td>
+					</tr>
+				</table>
+
+				<p><b>Chave</b></p>
+
+				<table>
+					<tr>
+						<th>c</th>
+						<th>h</th>
+						<th>a</th>
+						<th>v</th>
+						<th>e</th>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>7</td>
+						<td>0</td>
+						<td>21</td>
+						<td>4</td>
+					</tr>
+				</table>
 
 				<p>Essas sequencias de números são transformadas em arrays:</p>
 
-				<p>-- tabela --</p>
+				<table>
+					<tr>
+						<th>Texto original</th>
+						<th>Chave</th>
+					</tr>
+					<tr>
+						<td>[ 58, 11, 26, 100, 88, 12, 20, 13, 3, 14 ]</td>
+						<td>[ 2, 7, 0, 21, 4 ]</td>
+					</tr>
+				</table>
 
 				<p>Então essas <i>arrays</i> são combinadas pela operação XOR (em javascript representada pelo operador <code>^</code>), letra por letra. Nesse caso, a <b>chave</b> é menor que o <b>texto original</b>, então ela se repete o número de vezes suficiente para criptografar toda a mensagem:</p>
 
-				<p>-- tabela --</p>
+				<table>
+					<tr>
+						<th>58</th>
+						<th>11</th>
+						<th>26</th>
+						<th>100</th>
+						<th>88</th>
+						<th>12</th>
+						<th>20</th>
+						<th>13</th>
+						<th>3</th>
+						<th>14</th>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>7</td>
+						<td>0</td>
+						<td>21</td>
+						<td>3</td>
+						<td>2</td>
+						<td>7</td>
+						<td>0</td>
+						<td>21</td>
+						<td>4</td>
+					</tr>
+				</table>
+
+				<p>Resultado:</p>
+
+				<table>
+					<tr>
+						<th>56</th>
+						<th>12</th>
+						<th>26</th>
+						<th>113</th>
+						<th>92</th>
+						<th>14</th>
+						<th>19</th>
+						<th>13</th>
+						<th>22</th>
+						<th>10</th>
+					</tr>
+				</table>
 
 				<p>Os novos números gerados são transformados em caracteres de acordo com os índices correspondentes na variável <code>alfanum</code>. Repare que a variável <code>alfanum</code> tem 110 caracteres, isto é, o seu último caractere tem índice <code>109</code> e que o quarto número do resultado acima é <code>113</code>, maior que o maior índice dentro de <code>alfanum</code>. Nesse caso, <code>113</code> não será transformado em caractere, no texto final ficará representado dessa forma. Então, temos o <b>texto cifrado</b>, resultado final da cifragem:</p>
 
-				<p>-- tabela --</p>
+				<table>
+					<tr>
+						<th>56</th>
+						<th>12</th>
+						<th>26</th>
+						<th>113</th>
+						<th>92</th>
+						<th>14</th>
+						<th>19</th>
+						<th>13</th>
+						<th>22</th>
+						<th>10</th>
+					</tr>
+					<tr>
+						<td>M</td>
+						<td>m</td>
+						<td>á</td>
+						<td>113</td>
+						<td>$</td>
+						<td>o</td>
+						<td>t</td>
+						<td>n</td>
+						<td>w</td>
+						<td>k</td>
+					</tr>
+				</table>
+
+				<table>
+					<tr>
+						<th>Texto cifrado</th>
+					</tr>
+					<tr>
+						<td>Mmá113$otnwk</td>
+					</tr>
+				</table>
 
 				<p>O processo reverso, de decifragem, efetuado ao clicar em <code>Decript.</code>, solicita um <b>texto cifrado</b> e uma <b>chave</b>, tendo como resultado o <b>texto original</b>. O método de cifragem e de decifragem são quase iguais, tendo como diferença, na decifragem, o algoritmo que detecta um número no <b>texto cifrado</b>, já que só aparecerão números maiores que 109, todos os números estarão apresentados em trios, esse algoritmo detecta os próximos dois números, formando um trio na hora de decifrar, sendo esse trio, transformado em somente um caractere ao final do processo de decifragem. Eis aqui o motivo para não permitir números nessa criptografia.</p>
 
 				<h2>Faça bom uso :)</h2>
 			</div>
 
-			<br>
+			<!--br>
 
 			<h1>cry 2 mirrors</h1>
 			<ul>
@@ -95,7 +235,7 @@ var alfanum = 'abcdefghijklmnopqrstuvwxyzáàãâéèêíìîóòõôúùûçABC
 			<br>
 
 			<h1>Source code</h1>
-			<a href="https://github.com/Niaev/cry2-web">https://github.com/Niaev/cry2-web</a>
+			<a href="https://github.com/Niaev/cry2-web">https://github.com/Niaev/cry2-web</a-->
 			<br><br>
 		</div>
 		
